@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ cars.name }}</h1>
+    <p><strong>Modelo:</strong> {{ cars.model }}</p>
+    <p><strong>Marca:</strong> {{ cars.brand }}</p>
+    <p><strong>Valor:</strong> R$ {{ cars.value }}</p>
+    <p><strong>Placa:</strong> {{ cars.plate }}</p>
+    {% if cars.bio %}
+        <p><strong>Bio:</strong> {{ cars.bio }}</p>
+    {% endif %}
+    <p><strong>Foto:</strong></p>
+
+    {% if cars.photo %}
+        <img src="{{ cars.photo.url }}" alt="Foto do carro" style="max-width: 400px; max-height: 400px; width: auto; height: auto;" />
+    {% else %}
+        <p>Não há foto disponível</p>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <div>
+            <div class="buttons-containner">
+                <a href="{% url 'car_update' carro=cars.model %}" class="btn-cadastrar">Editar Informações</a>
+                <a href="{% url 'car_delete' carro=cars.model %}" class="btn-cadastrar">Deletar Carro</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

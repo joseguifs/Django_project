@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}  <!-- Adicionando o token CSRF -->
+
+        <div class="form_group">
+            {{ user_form.username.errors }}
+            <label>Usuário:</label>
+            {{ user_form.username }}
+        </div>
+
+        <div class="form_group">
+            {{ user_form.password1.errors }}
+            <label>Senha:</label>
+            {{ user_form.password1 }}
+        </div>
+
+        <div class="form_group">
+            {{ user_form.password2.errors }}
+            <label>Confirmar senha:</label>
+            {{ user_form.password2 }}
+        </div>
+
+        <input type="submit" value="Cadastrar">
+    </form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>Editar Carros</h1>
+        <table>
+            {{ form.as_table  }}
+        </table>
+        <div>
+            <div class="buttons-containner">
+            <input type="submit" value="Salvar Alterações" class="btn-cadastrar">
+            <a href="{% url 'car_delete' carro=car.model %}" class="btn-cadastrar">Deletar</a>
+            <a href="{% url 'cars_home' %}" class="btn-cadastrar">Cancelar</a>
+        </div>
+    </form>
+        
+
+{% endblock %}
